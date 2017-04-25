@@ -1,2 +1,2 @@
 # Sorts
-关于各种排序算法，分别使用JavaScript和C#来实现
+整理排序算法，使用JavaScript来实现
