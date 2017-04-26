@@ -1,0 +1,18 @@
+//冒泡排序：
+//重复走访要排序的数列，相邻元素两两比较
+var bubbleSort = function (arr) {
+    console.log("冒泡排序");
+    var i, j, temp;
+    for (i = 0; i < arr.length; i++) {
+        for (j = 0; j < arr.length - i; j++) {
+            if (arr[j + 1] < arr[j]) { //相邻元素进行比较
+                //元素交换
+                temp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+bubbleSort([23, 50, 8, 13, 80, 37]); // 输出 [8, 13, 23, 37, 50, 80]
