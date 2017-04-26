@@ -1,0 +1,20 @@
+//插入排序
+//对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入
+var insertionSort = function (arr) {
+    console.log("插入排序");
+    //假设第0个元素是一个有序的数列，第1个以后是无序的数列
+    //所以从第1个元素开始将无序的元素插入到有序的数列中    
+    for (var i = 1; i < arr.length; i++) {
+        var key = arr[i]; //取出无序数列中的第i个元素作为被插入元素
+        var j = i - 1; //记住有序数列中的最后一个位置
+        //比大小，找到被插入元素所在的位置
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j]; //将元素往后移动
+            j--;
+        }
+        //插入
+        arr[j + 1] = key;
+    }
+    return arr;
+}
+insertionSort([23, 50, 8, 13, 80, 37]);
