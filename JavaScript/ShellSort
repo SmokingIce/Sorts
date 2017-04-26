@@ -1,0 +1,24 @@
+//希尔排序
+//先将整个待排元素序列分割成若干个子序列分别进行直接插入排序，
+//然后依次缩减增量再进行排序
+//待整个序列中的元素基本有序时，再对全体元素进行一次直接插入排序。
+//因为直接插入排序在元素基本有序的情况下（接近最好情况），效率是很高的。
+var shellSort = function (arr) {
+    console.log("希尔排序");
+    var len = arr.length;
+    var temp;
+    var gap; //增量因子
+    for (gap = Math.floor(len / 2); gap > 0; gap = Math.floor(gap /= 2)) { //依次将增量缩减为原有增量的二分之一
+        console.log("gap:" + gap);
+        for (var i = gap; i < len; i++) {
+            temp = arr[i];
+            for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+                arr[j + gap] = arr[j];
+            }
+            arr[j + gap] = temp;
+        }
+    }
+    return arr;
+}
+var arr = [3, 44, 38, 5, 47, 15, 36, 50, 48, 77, 39];
+console.log(shellSort(arr));
