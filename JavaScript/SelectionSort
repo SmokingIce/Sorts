@@ -1,0 +1,22 @@
+//选择排序：
+//首先在未排序序列中找到最小的元素，存放到排序序列的起始位置,
+//然后，再从剩余未排序元素中继续寻找最小元素，然后放到已排序序列的末尾
+var selectionSort = function (arr) {
+    console.log("选择排序");
+    var len = arr.length;
+    var minIndex, temp;
+    for (var i = 0; i < len - 1; i++) {
+        minIndex = i; //默认最小数索引为当前循环起始位置i
+        for (var j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIndex]) { //寻找最小的数
+                minIndex = j; //将最小数的索引保存
+            }
+        }
+        //将找到的最小数与原有的最小数交换位置
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+    return arr;
+}
+selectionSort([23, 50, 8, 13, 80, 37]);// 输出 [8, 13, 23, 37, 50, 80]
