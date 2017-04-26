@@ -1,0 +1,39 @@
+//快速排序
+//在序列中找一个数作为基准数(比如第一个数作为基准数)
+//将这个序列中所有比基准数大的数放在基准数的右边，比基准数小的数放在基准数的左边
+//递归地把小于基准值元素的子数列和大于基准值元素的子数列排序
+function quickSort(array) {
+    console.log("快速排序");
+    function sort(left, right) {
+        var i = left;
+        var j = right - 1;
+        var flag = array[left]; //基准数
+        if ((right - left) > 1) {
+            while (i < j) {
+                for (; i < j; j--) {
+                    //从右向左找小于flag的数来填array[i] 
+                    if (array[j] < flag) {
+                        array[i] = array[j];
+                        i++;
+                        break;
+                    }
+                }
+                for (; i < j; i++) {
+                    //从左向右找大于flag的数来填充array[j]
+                    if (array[i] > flag) {
+                        array[j] = array[i];
+                        j--;
+                        break;
+                    }
+                }
+            }
+            array[i] = flag;
+            sort(0, i);//递归处理左边数列
+            sort(i + 1, right);//递归处理右边数列
+        }
+    }
+    sort(0, array.length);
+    return array;
+}
+var arr = [44, 38, 5, 47, 3, 50, 48, 77, 39];
+quickSort(arr); //输出 [3, 5, 38, 39, 44, 47, 48, 50, 77]
